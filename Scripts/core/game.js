@@ -9,6 +9,7 @@ let Game = (function () {
     let dice1;
     let dice2;
     let rollButton;
+    let stageBackground;
     let assetManifest = [
         { id: "1", src: "./Assets/images/1.png" },
         { id: "2", src: "./Assets/images/2.png" },
@@ -63,6 +64,9 @@ let Game = (function () {
         // Dice variables
         let d1;
         let d2;
+        // Background
+        stageBackground = new Core.GameObject("background", Config.Game.CENTER_X, Config.Game.CENTER_Y, true);
+        stage.addChild(stageBackground);
         // Roll button
         rollButton = new UIObjects.Button("rollButton", Config.Game.CENTER_X, Config.Game.CENTER_Y + 100, true);
         stage.addChild(rollButton);
@@ -77,6 +81,7 @@ let Game = (function () {
             console.log("Dice 2 is " + d2);
             // Remove objects and add updated versions
             stage.removeAllChildren();
+            stage.addChild(stageBackground);
             stage.addChild(rollButton);
             // Add dice 1
             dice1 = new Core.GameObject(d1, Config.Game.CENTER_X + 150, Config.Game.CENTER_Y - 100, true);

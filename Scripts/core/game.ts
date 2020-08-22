@@ -9,7 +9,8 @@ let Game = (function(){
     let label2: UIObjects.Label;
     let dice1: Core.GameObject;
     let dice2: Core.GameObject;
-    let rollButton: UIObjects.Button;    
+    let rollButton: UIObjects.Button;
+    let stageBackground: Core.GameObject; 
 
     let assetManifest = 
     [
@@ -78,6 +79,10 @@ let Game = (function(){
         let d1:string;
         let d2:string;
 
+        // Background
+        stageBackground = new Core.GameObject("background", Config.Game.CENTER_X, Config.Game.CENTER_Y, true);
+        stage.addChild(stageBackground);
+
         // Roll button
         rollButton = new UIObjects.Button("rollButton", Config.Game.CENTER_X, Config.Game.CENTER_Y + 100, true);
         stage.addChild(rollButton);
@@ -96,6 +101,7 @@ let Game = (function(){
 
             // Remove objects and add updated versions
             stage.removeAllChildren();
+            stage.addChild(stageBackground);
             stage.addChild(rollButton);
 
             // Add dice 1
