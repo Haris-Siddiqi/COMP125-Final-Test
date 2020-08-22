@@ -21,7 +21,7 @@ let Game = (function(){
         {id:"5", src:"./Assets/images/5.png"},
         {id:"6", src:"./Assets/images/6.png"},
         {id:"backButton", src:"./Assets/images/startButton.png"},
-        {id:"background", src:"./Assets/images/background.png"},
+        {id:"background", src:"./Assets/images/backgroundWood.png"},
         {id:"blank", src:"./Assets/images/blank.png"},
         {id:"button", src:"./Assets/images/button.png"},
         {id:"nextButton", src:"./Assets/images/nextButton.png"},
