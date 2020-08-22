@@ -4,8 +4,11 @@ let Game = (function () {
     let canvas = document.getElementsByTagName('canvas')[0];
     let stage;
     let assets;
-    let exampleLabel;
-    let exampleButton;
+    let label1;
+    let label2;
+    let dice1;
+    let dice2;
+    let rollButton;
     let assetManifest = [
         { id: "1", src: "./Assets/images/1.png" },
         { id: "2", src: "./Assets/images/2.png" },
@@ -57,29 +60,36 @@ let Game = (function () {
      */
     function Main() {
         console.log(`%c Main Function`, "color: grey; font-size: 14px; font-weight: bold;");
-        // Add dice 1
-        exampleButton = new UIObjects.Button("1", Config.Game.CENTER_X + 150, Config.Game.CENTER_Y - 100, true);
-        stage.addChild(exampleButton);
-        // Label
-        exampleLabel = new UIObjects.Label("1", "20px", "Consolas", "#000000", Config.Game.CENTER_X + 150, Config.Game.CENTER_Y + 15, true);
-        stage.addChild(exampleLabel);
-        // Add dice 2
-        exampleButton = new UIObjects.Button("2", Config.Game.CENTER_X - 150, Config.Game.CENTER_Y - 100, true);
-        stage.addChild(exampleButton);
-        // Label
-        exampleLabel = new UIObjects.Label("2", "20px", "Consolas", "#000000", Config.Game.CENTER_X - 150, Config.Game.CENTER_Y + 15, true);
-        stage.addChild(exampleLabel);
-        // Roll
-        exampleButton = new UIObjects.Button("rollButton", Config.Game.CENTER_X, Config.Game.CENTER_Y + 100, true);
-        stage.addChild(exampleButton);
-        exampleButton.on("click", () => {
+        // Dice variables
+        let d1;
+        let d2;
+        // Roll button
+        rollButton = new UIObjects.Button("rollButton", Config.Game.CENTER_X, Config.Game.CENTER_Y + 100, true);
+        stage.addChild(rollButton);
+        // When roll button is clicked
+        rollButton.on("click", () => {
             console.log("Dice rolled...");
             // Dice 1
-            let d1 = Math.floor(Util.Mathf.RandomRange(1, 6));
+            d1 = Math.floor(Util.Mathf.RandomRange(1, 6)).toString();
             console.log("Dice 1 is " + d1);
             // Dice 2
-            let d2 = Math.floor(Util.Mathf.RandomRange(1, 6));
-            console.log("Dice 1 is " + d2);
+            d2 = Math.floor(Util.Mathf.RandomRange(1, 6)).toString();
+            console.log("Dice 2 is " + d2);
+            // Remove objects and add updated versions
+            stage.removeAllChildren();
+            stage.addChild(rollButton);
+            // Add dice 1
+            dice1 = new Core.GameObject(d1, Config.Game.CENTER_X + 150, Config.Game.CENTER_Y - 100, true);
+            stage.addChild(dice1);
+            // Label
+            label1 = new UIObjects.Label(d1, "20px", "Consolas", "#000000", Config.Game.CENTER_X + 150, Config.Game.CENTER_Y + 15, true);
+            stage.addChild(label1);
+            // Add dice 2
+            dice2 = new Core.GameObject(d2, Config.Game.CENTER_X - 150, Config.Game.CENTER_Y - 100, true);
+            stage.addChild(dice2);
+            // Label
+            label2 = new UIObjects.Label(d2, "20px", "Consolas", "#000000", Config.Game.CENTER_X - 150, Config.Game.CENTER_Y + 15, true);
+            stage.addChild(label2);
         });
     }
     window.addEventListener('load', Preload);
