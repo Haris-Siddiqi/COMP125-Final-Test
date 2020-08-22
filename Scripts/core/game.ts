@@ -123,6 +123,4 @@ let Game = (function(){
     }
 
     window.addEventListener('load', Preload);
-
-
 })();
