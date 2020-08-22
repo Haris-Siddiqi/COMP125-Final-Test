@@ -10,7 +10,8 @@ let Game = (function(){
     let dice1: Core.GameObject;
     let dice2: Core.GameObject;
     let rollButton: UIObjects.Button;
-    let stageBackground: Core.GameObject; 
+    let stageBackground: Core.GameObject;
+    let soundID = "Thunder";
 
     let assetManifest = 
     [
@@ -67,6 +68,16 @@ let Game = (function(){
         stage.update();
     }
 
+    // Register sound from assets
+    function loadSound () {
+        createjs.Sound.registerSound("./Assets/thunder.mp3", soundID);
+    }
+    
+    // Play sound
+    function playSound () {
+        createjs.Sound.play(soundID);
+    }
+
     /**
      * This is the main function of the Game (where all the fun happens)
      *
@@ -87,9 +98,15 @@ let Game = (function(){
         rollButton = new UIObjects.Button("rollButton", Config.Game.CENTER_X, Config.Game.CENTER_Y + 100, true);
         stage.addChild(rollButton);
 
+        // Load sound
+        loadSound();
+
         // When roll button is clicked
         rollButton.on("click", ()=>{
             console.log("Dice rolled...");
+
+            // Play sound
+            playSound();
 
             // Dice 1
             d1 = Math.floor(Util.Mathf.RandomRange(1, 6)).toString();
