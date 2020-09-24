@@ -1,3 +1,5 @@
-# COMP125-M2020-Final Test-Template
+# Dice Roll App
 
-## Final Test Template Project for COMP125
+- Built a web-based dice roll app
+- Implemented sound effect with CreateJS and SoundJS
+- Utilized: TypeScript, JavaScript, CreateJS, SoundJS, GIT
